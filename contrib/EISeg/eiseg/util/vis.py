@@ -15,7 +15,7 @@ def visualize_instances(
     result = palette[imask].astype(np.uint8)
     if boundaries_color is not None:
         boundaries_mask = get_boundaries(imask, boundaries_width=boundaries_width)
-        tresult = result.astype(np.float32)
+        tresult = result.astype('float32')
         tresult[boundaries_mask] = boundaries_color
         tresult = tresult * boundaries_alpha + (1 - boundaries_alpha) * result
         result = tresult.astype(np.uint8)
@@ -26,7 +26,7 @@ def visualize_instances(
 @lru_cache(maxsize=16)
 def get_palette(num_cls):
     return np.array([[0, 0, 0], [128, 0, 0], [0, 128, 0], [0, 0, 128]])
-    palette = np.zeros(3 * num_cls, dtype=np.int32)
+    palette = np.zeros(3 * num_cls, dtype='int32')
 
     for j in range(0, num_cls):
         lab = j
@@ -90,7 +90,7 @@ def blend_mask(image, mask, alpha=0.6):
 
 def get_boundaries(instances_masks, boundaries_width=1):
     boundaries = np.zeros(
-        (instances_masks.shape[0], instances_masks.shape[1]), dtype=np.bool
+        (instances_masks.shape[0], instances_masks.shape[1]), dtype='bool'
     )
 
     for obj_id in np.unique(instances_masks.flatten()):
@@ -101,7 +101,7 @@ def get_boundaries(instances_masks, boundaries_width=1):
         kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
         inner_mask = cv2.erode(
             obj_mask.astype(np.uint8), kernel, iterations=boundaries_width
-        ).astype(np.bool)
+        ).astype('bool')
 
         obj_boundary = np.logical_xor(obj_mask, np.logical_and(inner_mask, obj_mask))
         boundaries = np.logical_or(boundaries, obj_boundary)

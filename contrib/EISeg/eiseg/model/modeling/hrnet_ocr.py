@@ -392,7 +392,7 @@ class HighResolutionNet(nn.Layer):
         model_dict = self.state_dict()
 
         if not os.path.exists(pretrained_path):
-            exit(1)
+            raise Exception("No such pretrained file!")
         pretrained_dict = paddle.load(pretrained_path)
         pretrained_dict = {k.replace('last_layer', 'aux_head').replace('model.', ''): v for k, v in
                            pretrained_dict.items()}

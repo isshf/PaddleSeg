@@ -6,9 +6,9 @@ from model.ops import DistMaps, ScaleLayer, BatchImageNormalize
 
 
 class ISModel(nn.Layer):
-    def __init__(self, use_rgb_conv=True, with_aux_output=False,
-                 norm_radius=5, use_disks=False, cpu_dist_maps=False,
-                 clicks_groups=None, with_prev_mask=False, use_leaky_relu=False,
+    def __init__(self, use_rgb_conv=False, with_aux_output=True,
+                 norm_radius=5, use_disks=True, cpu_dist_maps=False,
+                 clicks_groups=None, with_prev_mask=False, use_leaky_relu=True,
                  binary_prev_mask=False, conv_extend=False, norm_layer=nn.BatchNorm2D,
                  norm_mean_std=([.485, .456, .406], [.229, .224, .225])):
         super().__init__()
@@ -110,7 +110,7 @@ def split_points_by_order(tpoints, groups):
     num_points = points.shape[1] // 2
 
     groups = [x if x > 0 else num_points for x in groups]
-    group_points = [np.full((bs, 2 * x, 3), -1, dtype=np.float32)
+    group_points = [np.full((bs, 2 * x, 3), -1, dtype='float32')
                     for x in groups]
 
     last_point_indx_group = np.zeros((bs, num_groups, 2), dtype=np.int)

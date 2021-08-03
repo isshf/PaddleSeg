@@ -1,0 +1,25 @@
+INTERACTIVE_MODELS_PATH: "./weights"
+EXPS_PATH: "./experiments"
+
+# Evaluation datasets
+GRABCUT_PATH: "/home/haoyuying/datasets/GrabCut"
+BERKELEY_PATH: "/home/haoyuying/datasets/Berkeley"
+DAVIS_PATH: "/mnt/haoyuying/iis/ritm_interactive_segmentation/datasets/DAVIS"
+COCO_MVAL_PATH: "/mnt/haoyuying/iis/ritm_interactive_segmentation/datasets/COCO_MVal"
+
+# Train datasets
+SBD_PATH: "/mnt/haoyuying/iis/ritm_interactive_segmentation/datasets/SBD"
+COCO_PATH: "/home/haoyuying/datasets/coco2017"
+LVIS_PATH: "/home/haoyuying/datasets/LVIS"
+OPENIMAGES_PATH: "./datasets/OpenImages"
+PASCALVOC_PATH: "/mnt/haoyuying/iis/ritm_paddle_mac/dataset/VOC2012"
+ADE20K_PATH: "./datasets/ADE20K"
+HUMAN_PATH: "/mnt/haoyuying/human"
+ZHONGCE_PATH: "/ssd1/home/haoyuying/hyy"
+
+# You can download the weights for HRNet from the repository:
+# https://github.com/HRNet/HRNet-Image-Classification
+IMAGENET_PRETRAINED_MODELS:
+  HRNETV2_W18S: "/ssd1/home/haoyuying/pr/ritm_paddle_mac/imagenet_pretrained/hrnetv2_w18_small_imagenet.pdparams"
+  HRNETV2_W18: "./imagenet_pretrained/hrnetv2_w18_imagenet_pretrained.pdparams"
+  HRNETV2_W32: "./imagenet_pretrained/hrnetv2_w32_imagenet_pretrained.pdparams"
