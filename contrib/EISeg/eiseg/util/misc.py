@@ -10,7 +10,7 @@ def get_dims_with_exclusion(dim, exclude=None):
     return dims
 
 
-def save_checkpoint(net, checkpoints_path, epoch=None, prefix='', verbose=True, multi_gpu=False):
+def save_checkpoint(net, checkpoints_path, epoch=None, prefix='', verbose=True):
     if epoch is None:
         checkpoint_name = 'last_checkpoint.pdparams'
     else:
@@ -23,9 +23,6 @@ def save_checkpoint(net, checkpoints_path, epoch=None, prefix='', verbose=True, 
         checkpoints_path.mkdir(parents=True)
 
     checkpoint_path = checkpoints_path / checkpoint_name
-
-    net = net.module if multi_gpu else net
-   
     paddle.save(net.state_dict(), checkpoint_path)
 
 
