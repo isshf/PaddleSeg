@@ -178,7 +178,7 @@ class ISTrainer(object):
             if epoch % checkpoint_interval == 0:
                 print('saving model .........')
                 save_checkpoint(self.net, self.cfg.CHECKPOINTS_PATH, prefix=self.task_prefix,
-                                epoch=epoch, multi_gpu=self.cfg.multi_gpu)
+                                epoch=epoch)
                 print('finish save model!')
 
 
